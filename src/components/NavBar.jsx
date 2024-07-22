@@ -2,7 +2,6 @@
 import { Link } from 'react-router-dom';
 
 const NavBar = () => {
-    // src/components/NavBar.jsx
   return (
     <nav>
       <ul>
