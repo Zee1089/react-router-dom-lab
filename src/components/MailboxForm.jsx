@@ -2,6 +2,7 @@ import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 
 const initialState = {
+  mailboxId: 0,
   boxSize: '',
   boxHolder: '',
 };
@@ -43,6 +44,7 @@ const MailboxForm = (props) => {
           value={formData.boxHolder}
           onChange={handleChange}
         />
+        
         <button type="submit">Submit</button>
       </form>
     </main>

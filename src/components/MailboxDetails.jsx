@@ -17,6 +17,8 @@ return (
         <dd>{singleMailbox.boxSize}</dd>
         <dt>Box Holder:</dt>
         <dd>{singleMailbox.boxHolder}</dd>
+        <dt>Letters:</dt>
+        <dd>{singleMailbox.boxHolder}</dd>
       </dl>
     </>
   );

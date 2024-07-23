@@ -7,15 +7,29 @@ import MailboxList from './components/MailboxList';
 import MailboxForm from './components/MailboxForm';
 import MailboxDetails from './components/MailboxDetails';
 import './App.css'
-
+import LetterForm from './components/LetterForm';
+import { useNavigate } from 'react-router-dom';
 
 const App = () => {
   const [mailbox, setMailbox] = useState([]);
+  const [letters, setLetters] = useState([]);
+  const navigate = useNavigate();
+
   const addMailbox = (newMailboxData) => {
     newMailboxData._id = mailbox.length + 1;
     setMailbox([...mailbox, newMailboxData]);
     console.log(newMailboxData);
   };
+
+  const addLetter = (newLetterData) => {
+    newLetterData._id = letters.length +1;
+    setLetters([...letters, newLetterData]);
+    console.log(newLetterData);
+    navigate('/new-letter')
+  
+  
+  }
+  
   
   return (
     <>
@@ -29,6 +43,7 @@ const App = () => {
             element={<MailboxDetails mailbox={mailbox} />}
           />    
           <Route path="/new-mailbox" element={<MailboxForm addMailbox={addMailbox} />} />
+          <Route path="/new-letter" element={<LetterForm addLetter={addLetter} />} />
 
       </Routes>
 
