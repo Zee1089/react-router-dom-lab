@@ -6,6 +6,11 @@ const MailboxDetails = (props) => {
     const singleMailbox = props.mailbox.find(
         (mailbox) => mailbox._id === Number(mailboxId));
     console.log('Mailbox Object:', singleMailbox)
+
+
+    const selectedLetters = props.letters.filter(
+        (letter) => letter.mailboxId === Number(mailboxId)
+      );
   
   
   // src/components/PokemonDetails.jsx
@@ -18,7 +23,17 @@ return (
         <dt>Box Holder:</dt>
         <dd>{singleMailbox.boxHolder}</dd>
         <dt>Letters:</dt>
-        <dd>{singleMailbox.boxHolder}</dd>
+        <dd>{selectedLetters._id}</dd>
+        <dd>
+          <ul>
+            {selectedLetters.map((letter, index) => (
+              <li key={index}>
+                <p>Recipient: {letter.recipient}</p>
+                <p>Message: {letter.message}</p>
+              </li>
+            ))}
+          </ul>
+        </dd>
       </dl>
     </>
   );

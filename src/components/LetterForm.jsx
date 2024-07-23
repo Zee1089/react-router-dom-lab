@@ -17,7 +17,7 @@ const handleSubmit = (e) => {
     e.preventDefault();
     addLetter(formData);
     setFormData(initialState);
-    navigate(`/mailbox/${formData.mailboxId}`)
+    navigate(`/mailbox/${currentMailbox._id}`)
     
   }
   
@@ -29,7 +29,7 @@ const handleSubmit = (e) => {
     return (
       <main>
         <h2>New Letter</h2>
-        <form onSubmit={addLetter}>
+        <form onSubmit={handleSubmit}>
           <label htmlFor="recipient">Recipient:</label>
           <input
             type="text"
