@@ -24,10 +24,7 @@ const App = () => {
   const addLetter = (newLetterData) => {
     newLetterData._id = letters.length +1;
     setLetters([...letters, newLetterData]);
-    console.log(newLetterData);
-    navigate('/new-letter')
-  
-  
+    console.log('New letter added:', newLetter);
   }
   
   
@@ -37,13 +34,13 @@ const App = () => {
       <NavBar />
       <Routes>
           <Route path="/" element={<h2>Home Page</h2>} />
-          <Route path="/mailboxes" element={<MailboxList mailbox={mailbox} />} />
+          <Route path="/mailbox" element={<MailboxList mailbox={mailbox} />} />
           <Route
-            path="/mailboxes/:mailboxId"
-            element={<MailboxDetails mailbox={mailbox} />}
+            path="/mailbox/:mailboxId"
+            element={<MailboxDetails mailbox={mailbox} letters={letters} />}
           />    
           <Route path="/new-mailbox" element={<MailboxForm addMailbox={addMailbox} />} />
-          <Route path="/new-letter" element={<LetterForm addLetter={addLetter} />} />
+          <Route path="/new-letter" element={<LetterForm mailbox={mailbox} addLetter={addLetter} />} />
 
       </Routes>
 

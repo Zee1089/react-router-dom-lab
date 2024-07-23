@@ -16,7 +16,7 @@ const MailboxForm = (props) => {
     // console.log("Form submitted:", formData); // Debugging log
     props.addMailbox(formData);
     setFormData(initialState);
-    navigate('/mailboxes');
+    navigate('/mailbox');
 };
 
   const handleChange = ({ target }) => {

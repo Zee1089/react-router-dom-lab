@@ -7,17 +7,18 @@ const initialState = {
 };
 
 
-const LetterForm = (props) => {
+const LetterForm = ({ mailbox, addLetter}) => {
     const navigate = useNavigate();
     const [formData, setFormData] = useState(initialState);
     const [letters, setLetters] = useState([]);
   
   
-const addLetter = (e) => {
+const handleSubmit = (e) => {
     e.preventDefault();
-    props.addLetter(formData);
+    addLetter(formData);
     setFormData(initialState);
-    navigate('/new-letter')
+    navigate(`/mailbox/${formData.mailboxId}`)
+    
   }
   
     const handleChange = ({ target }) => {
@@ -46,12 +47,22 @@ const addLetter = (e) => {
             onChange={handleChange}
           />
             <label htmlFor="mailboxId">Mailbox:</label>
-            <input
-              type="text"
+            <select
+    
               id="mailboxId"
               name="mailboxId"
               value={formData.mailboxId}
-           />
+              >
+
+{/* //got help from internet  */}
+                <option value= "" disabled >{mailbox.length}</option>
+                {mailbox.map((mailbox) => (
+                    <option key={mailbox._id} value={mailbox._id}>
+                        {mailbox._id}
+                    </option>
+//got help from internet. 
+                ))}
+           </select>
           <button type="submit">Submit</button>
         </form>
       </main>
