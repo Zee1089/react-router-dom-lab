@@ -4,6 +4,7 @@ import { useState } from 'react';
 const initialState = {
   recipient: '',
   message: '',
+  mailboxId: ''
 };
 
 
@@ -17,7 +18,7 @@ const handleSubmit = (e) => {
     e.preventDefault();
     addLetter(formData);
     setFormData(initialState);
-    navigate(`/mailbox/${currentMailbox._id}`)
+    navigate(`/mailbox/${formData.mailboxId}`)
     
   }
   
@@ -52,6 +53,7 @@ const handleSubmit = (e) => {
               id="mailboxId"
               name="mailboxId"
               value={formData.mailboxId}
+              onChange={handleChange} 
               >
 
 {/* //got help from internet  */}

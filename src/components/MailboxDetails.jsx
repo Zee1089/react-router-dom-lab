@@ -1,20 +1,22 @@
-
 import { useParams } from 'react-router-dom';
 
 const MailboxDetails = (props) => {
-    const { mailboxId } = useParams();
-    const singleMailbox = props.mailbox.find(
-        (mailbox) => mailbox._id === Number(mailboxId));
-    console.log('Mailbox Object:', singleMailbox)
+  const { mailboxId } = useParams();
+  const singleMailbox = props.mailbox.find(
+    (mailbox) => mailbox._id === mailboxId
+  );
 
+  console.log('Mailbox Object:', singleMailbox);
 
-    const selectedLetters = props.letters.filter(
-        (letter) => letter.mailboxId === Number(mailboxId)
-      );
-  
-  
-  // src/components/PokemonDetails.jsx
-return (
+  const selectedLetters = props.letters.filter(
+    (letter) => letter.mailboxId === mailboxId
+  );
+
+  if (!singleMailbox) {
+    return <p>Mailbox not found</p>; // Handle case when mailbox is not found
+  }
+
+  return (
     <>
       <h2>{singleMailbox._id}</h2>
       <dl>
@@ -23,7 +25,6 @@ return (
         <dt>Box Holder:</dt>
         <dd>{singleMailbox.boxHolder}</dd>
         <dt>Letters:</dt>
-        <dd>{selectedLetters._id}</dd>
         <dd>
           <ul>
             {selectedLetters.map((letter, index) => (
@@ -37,8 +38,6 @@ return (
       </dl>
     </>
   );
-  
-  };
-  
-  export default MailboxDetails;
-  
+};
+
+export default MailboxDetails;

@@ -24,7 +24,7 @@ const App = () => {
   const addLetter = (newLetterData) => {
     newLetterData._id = letters.length +1;
     setLetters([...letters, newLetterData]);
-    console.log('New letter added:', newLetter);
+
   }
   
   
